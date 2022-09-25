@@ -1,0 +1,30 @@
+#1253번 투포인터 : '좋은 수' 구하기
+#특정 1개의 원소를 고르고, 해당 원소를 제외환 리스트에서 투 포인터를 통해
+#두 원소의 합의 합이 선택한 원소와 같은지 비교하는 방식
+
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+num = list(map(int, input().split()))
+num.sort()
+count = 0
+
+
+for i in range(n):
+# 반복문을 통해 특정원소 num[i]선택 후, 해당원소 제외한 리스트 만들기
+    tmp = num[:i] + num[i+1:]
+    left, right = 0, len(tmp) - 1
+
+# t < num[i] 이면 left 를 증가
+# t > num[i] 이면 right 를 감소
+    while left < right:
+        t = tmp[left] + tmp[right]
+        if t == num[i]:
+            count += 1
+            break
+        if t < num[i]:
+            left += 1
+        else:
+            right -=1
+print(count)
