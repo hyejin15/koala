@@ -1,0 +1,13 @@
+#11004번 //퀵 정렬:K번째 수 구하기
+
+import sys
+input = sys.stdin.readline
+
+
+
+n, k = map(int, input().split())
+
+num_list = list(map(int, input().split()))
+
+num_list.sort()
+print(num_list[k-1])
